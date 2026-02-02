@@ -9,10 +9,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.0" />
-    <ProjectReference Include="..\..\..\..\modules\starbender.fprimesharp.gds\src\Starbender.FPrimeSharp.Gds.Application\Starbender.FPrimeSharp.Gds.Application.csproj" />
-    <ProjectReference Include="..\..\..\..\modules\starbender.fprimesharp.gds\src\Starbender.FPrimeSharp.Gds.Blazor\Starbender.FPrimeSharp.Gds.Blazor.csproj" />
-    <ProjectReference Include="..\..\..\..\modules\starbender.fprimesharp.gds\src\Starbender.FPrimeSharp.Gds.EntityFrameworkCore\Starbender.FPrimeSharp.Gds.EntityFrameworkCore.csproj" />
-    <ProjectReference Include="..\..\..\..\modules\starbender.fprimesharp.gds\src\Starbender.FPrimeSharp.Gds.HttpApi\Starbender.FPrimeSharp.Gds.HttpApi.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\bridge\src\Starbender.FPrimeSharp.Bridge.Application\Starbender.FPrimeSharp.Bridge.Application.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\bridge\src\Starbender.FPrimeSharp.Bridge.EntityFrameworkCore\Starbender.FPrimeSharp.Bridge.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\bridge\src\Starbender.FPrimeSharp.Bridge.HttpApi\Starbender.FPrimeSharp.Bridge.HttpApi.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\gds\src\Starbender.FPrimeSharp.Gds.Application\Starbender.FPrimeSharp.Gds.Application.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\gds\src\Starbender.FPrimeSharp.Gds.Blazor\Starbender.FPrimeSharp.Gds.Blazor.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\gds\src\Starbender.FPrimeSharp.Gds.EntityFrameworkCore\Starbender.FPrimeSharp.Gds.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\gds\src\Starbender.FPrimeSharp.Gds.HttpApi\Starbender.FPrimeSharp.Gds.HttpApi.csproj" />
     <ProjectReference Include="..\Starbender.FPrimeSharp.GdsApp.Client\Starbender.FPrimeSharp.GdsApp.Client.csproj" />
     <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
     <PackageReference Include="Serilog.Sinks.Async" Version="2.1.0" />

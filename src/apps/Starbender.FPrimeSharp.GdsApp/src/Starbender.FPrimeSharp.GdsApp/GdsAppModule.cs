@@ -67,6 +67,8 @@ using Volo.Abp.Studio.Client.AspNetCore;
 using Starbender.FPrimeSharp.Gds.EntityFrameworkCore;
 using Starbender.FPrimeSharp.Gds.Blazor;
 using Starbender.FPrimeSharp.Gds;
+using Starbender.FPrimeSharp.Bridge.EntityFrameworkCore;
+using Starbender.FPrimeSharp.Bridge;
 
 namespace Starbender.FPrimeSharp.GdsApp;
 
@@ -114,7 +116,11 @@ namespace Starbender.FPrimeSharp.GdsApp;
     typeof(AbpAspNetCoreComponentsServerBasicThemeModule),
     typeof(AbpAspNetCoreComponentsWebAssemblyBasicThemeBundlingModule),
 
-    // Setting Management module packages
+    // FPrimeSharp Bridge module packages
+    typeof(BridgeHttpApiModule),
+    typeof(BridgeApplicationModule),
+
+    // FPrimeSharp GDS module packages
     typeof(GdsBlazorModule),
     typeof(GdsHttpApiModule),
     typeof(GdsApplicationModule),
@@ -129,7 +135,8 @@ namespace Starbender.FPrimeSharp.GdsApp;
     typeof(AbpBackgroundJobsEntityFrameworkCoreModule),
     typeof(BlobStoringDatabaseEntityFrameworkCoreModule),
     typeof(AbpEntityFrameworkCoreSqliteModule),
-    typeof(GdsEntityFrameworkCoreModule)
+    typeof(GdsEntityFrameworkCoreModule),
+    typeof(BridgeEntityFrameworkCoreModule)
 )]
 public class GdsAppModule : AbpModule
 {
@@ -273,11 +280,12 @@ public class GdsAppModule : AbpModule
 
     private void ConfigureBlazorise(ServiceConfigurationContext context)
     {
+        var licenseKey = context.Configuration["Blazorise:LicenseKey"];
+
         context.Services
             .AddBlazorise(options =>
             {
-                // TODO (IMPORTANT): To use Blazorise, you need a license key. Get your license key directly from Blazorise, follow  the instructions at https://abp.io/faq#how-to-get-blazorise-license-key
-                //options.ProductToken = "Your Product Token";
+                options.ProductToken = licenseKey;
             })
             .AddBootstrap5Providers()
             .AddFontAwesomeIcons();

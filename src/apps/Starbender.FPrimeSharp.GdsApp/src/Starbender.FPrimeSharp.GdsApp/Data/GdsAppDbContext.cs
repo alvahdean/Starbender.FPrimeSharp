@@ -10,6 +10,7 @@ using Volo.Abp.OpenIddict.EntityFrameworkCore;
 using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Starbender.FPrimeSharp.Gds.EntityFrameworkCore;
+using Starbender.FPrimeSharp.Bridge.EntityFrameworkCore;
 
 namespace Starbender.FPrimeSharp.GdsApp.Data;
 
@@ -39,6 +40,7 @@ public class GdsAppDbContext : AbpDbContext<GdsAppDbContext>
         builder.ConfigureIdentity();
         builder.ConfigureOpenIddict();
         builder.ConfigureGds();
+        builder.ConfigureBridge();
         
         /* Configure your own entities here */
     }
