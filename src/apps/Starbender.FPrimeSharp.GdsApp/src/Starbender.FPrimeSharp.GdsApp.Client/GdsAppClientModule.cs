@@ -102,11 +102,12 @@ public class GdsAppClientModule : AbpModule
 
     private void ConfigureBlazorise(ServiceConfigurationContext context)
     {
+        var licenseKey = context.Configuration["Blazorise:LicenseKey"];
+
         context.Services
             .AddBlazorise(options =>
             {
-                // TODO (IMPORTANT): To use Blazorise, you need a license key. Get your license key directly from Blazorise, follow  the instructions at https://abp.io/faq#how-to-get-blazorise-license-key
-                //options.ProductToken = "Your Product Token";
+                options.ProductToken = licenseKey;
             })
             .AddBootstrap5Providers()
             .AddFontAwesomeIcons();

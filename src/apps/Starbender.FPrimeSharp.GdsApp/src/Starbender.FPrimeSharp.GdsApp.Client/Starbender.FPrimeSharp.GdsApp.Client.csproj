@@ -10,8 +10,8 @@
   </PropertyGroup>
 
 	<ItemGroup>
-    <ProjectReference Include="..\..\..\..\modules\starbender.fprimesharp.gds\src\Starbender.FPrimeSharp.Gds.Blazor\Starbender.FPrimeSharp.Gds.Blazor.csproj" />
-    <ProjectReference Include="..\..\..\..\modules\starbender.fprimesharp.gds\src\Starbender.FPrimeSharp.Gds.HttpApi.Client\Starbender.FPrimeSharp.Gds.HttpApi.Client.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\gds\src\Starbender.FPrimeSharp.Gds.Blazor\Starbender.FPrimeSharp.Gds.Blazor.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\gds\src\Starbender.FPrimeSharp.Gds.HttpApi.Client\Starbender.FPrimeSharp.Gds.HttpApi.Client.csproj" />
     <ProjectReference Include="..\Starbender.FPrimeSharp.GdsApp.Contracts\Starbender.FPrimeSharp.GdsApp.Contracts.csproj" />
     <PackageReference Include="Blazorise.Bootstrap5" Version="1.8.8" />
     <PackageReference Include="Blazorise.Icons.FontAwesome" Version="1.8.8" />
