@@ -46,8 +46,19 @@
         <File Path=".gitattributes" />
         <File Path=".gitignore" />
         <File Path="common.props" />
+        <File Path="etc/build/build-images-locally.ps1" />
+        <File Path="etc/docker/docker-compose.yml" />
+        <File Path="etc/docker/run-docker.ps1" />
+        <File Path="etc/docker/stop-docker.ps1" />
         <File Path="migrate-database.ps1" />
         <File Path="NuGet.Config" />
         <File Path="README.md" />
+    </Folder>
+    <Folder Name="/_SolutionItems/scripts/">
+        <File Path="etc/build/build-images-locally.ps1" />
+        <File Path="etc/docker/docker-compose.yml" />
+        <File Path="etc/docker/run-docker.ps1" />
+        <File Path="etc/docker/stop-docker.ps1" />
+        <File Path="etc/scripts/migrate-database.ps1" />
     </Folder>
 </Solution>
