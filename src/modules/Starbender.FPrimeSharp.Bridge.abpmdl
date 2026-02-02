@@ -1,0 +1,58 @@
+{
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {}
+    }
+  },
+  "packages": {
+    "Starbender.FPrimeSharp.Bridge.Domain": {
+      "path": "src/Starbender.FPrimeSharp.Bridge.Domain/Starbender.FPrimeSharp.Bridge.Domain.abppkg",
+      "folder": "src"
+    },
+    "Starbender.FPrimeSharp.Bridge.Application.Contracts": {
+      "path": "src/Starbender.FPrimeSharp.Bridge.Application.Contracts/Starbender.FPrimeSharp.Bridge.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "Starbender.FPrimeSharp.Bridge.Application": {
+      "path": "src/Starbender.FPrimeSharp.Bridge.Application/Starbender.FPrimeSharp.Bridge.Application.abppkg",
+      "folder": "src"
+    },
+    "Starbender.FPrimeSharp.Bridge.EntityFrameworkCore": {
+      "path": "src/Starbender.FPrimeSharp.Bridge.EntityFrameworkCore/Starbender.FPrimeSharp.Bridge.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "Starbender.FPrimeSharp.Bridge.HttpApi": {
+      "path": "src/Starbender.FPrimeSharp.Bridge.HttpApi/Starbender.FPrimeSharp.Bridge.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "Starbender.FPrimeSharp.Bridge.HttpApi.Client": {
+      "path": "src/Starbender.FPrimeSharp.Bridge.HttpApi.Client/Starbender.FPrimeSharp.Bridge.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "Starbender.FPrimeSharp.Bridge.TestBase": {
+      "path": "test/Starbender.FPrimeSharp.Bridge.TestBase/Starbender.FPrimeSharp.Bridge.TestBase.abppkg",
+      "folder": "test"
+    },
+    "Starbender.FPrimeSharp.Bridge.EntityFrameworkCore.Tests": {
+      "path": "test/Starbender.FPrimeSharp.Bridge.EntityFrameworkCore.Tests/Starbender.FPrimeSharp.Bridge.EntityFrameworkCore.Tests.abppkg",
+      "folder": "test"
+    },
+    "Starbender.FPrimeSharp.Bridge.Domain.Tests": {
+      "path": "test/Starbender.FPrimeSharp.Bridge.Domain.Tests/Starbender.FPrimeSharp.Bridge.Domain.Tests.abppkg",
+      "folder": "test"
+    },
+    "Starbender.FPrimeSharp.Bridge.Application.Tests": {
+      "path": "test/Starbender.FPrimeSharp.Bridge.Application.Tests/Starbender.FPrimeSharp.Bridge.Application.Tests.abppkg",
+      "folder": "test"
+    },
+    "Starbender.FPrimeSharp.Bridge.Domain.Shared": {
+      "path": "src/Starbender.FPrimeSharp.Bridge.Domain.Shared/Starbender.FPrimeSharp.Bridge.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "Starbender.FPrimeSharp.Bridge.Installer": {
+       "path": "src/Starbender.FPrimeSharp.Bridge.Installer/Starbender.FPrimeSharp.Bridge.Installer.abppkg",
+       "folder": "src"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Starbender.FPrimeSharp.Gds</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Mapperly" Version="10.0.2" />
+    <PackageReference Include="Volo.Abp.Ddd.Application" Version="10.0.2" />
+    <ProjectReference Include="..\Starbender.FPrimeSharp.Gds.Application.Contracts\Starbender.FPrimeSharp.Gds.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Starbender.FPrimeSharp.Gds.Domain\Starbender.FPrimeSharp.Gds.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
