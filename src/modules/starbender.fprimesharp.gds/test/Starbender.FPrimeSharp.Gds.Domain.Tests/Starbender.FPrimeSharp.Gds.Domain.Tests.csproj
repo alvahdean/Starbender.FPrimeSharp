@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Starbender.FPrimeSharp.Gds</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Starbender.FPrimeSharp.Gds.Domain\Starbender.FPrimeSharp.Gds.Domain.csproj" />
+    <ProjectReference Include="..\Starbender.FPrimeSharp.Gds.TestBase\Starbender.FPrimeSharp.Gds.TestBase.csproj" />
+  </ItemGroup>
+
+
+</Project>

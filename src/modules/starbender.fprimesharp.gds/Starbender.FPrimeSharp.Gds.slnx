@@ -1,0 +1,24 @@
+<Solution>
+    <Configurations>
+        <Platform Name="Any CPU" />
+    </Configurations>
+
+    <Folder Name="/src/">
+        <Project Path="src/Starbender.FPrimeSharp.Gds.Domain.Shared/Starbender.FPrimeSharp.Gds.Domain.Shared.csproj" />
+        <Project Path="src/Starbender.FPrimeSharp.Gds.Domain/Starbender.FPrimeSharp.Gds.Domain.csproj" />
+        <Project Path="src/Starbender.FPrimeSharp.Gds.Application.Contracts/Starbender.FPrimeSharp.Gds.Application.Contracts.csproj" />
+        <Project Path="src/Starbender.FPrimeSharp.Gds.Application/Starbender.FPrimeSharp.Gds.Application.csproj" />
+        <Project Path="src/Starbender.FPrimeSharp.Gds.EntityFrameworkCore/Starbender.FPrimeSharp.Gds.EntityFrameworkCore.csproj" />
+        <Project Path="src/Starbender.FPrimeSharp.Gds.HttpApi/Starbender.FPrimeSharp.Gds.HttpApi.csproj" />
+        <Project Path="src/Starbender.FPrimeSharp.Gds.HttpApi.Client/Starbender.FPrimeSharp.Gds.HttpApi.Client.csproj" />
+        <Project Path="src/Starbender.FPrimeSharp.Gds.Blazor/Starbender.FPrimeSharp.Gds.Blazor.csproj" />
+        <Project Path="src/Starbender.FPrimeSharp.Gds.Installer/Starbender.FPrimeSharp.Gds.Installer.csproj" />
+    </Folder>
+    
+    <Folder Name="/test/">
+        <Project Path="test/Starbender.FPrimeSharp.Gds.TestBase/Starbender.FPrimeSharp.Gds.TestBase.csproj" />
+        <Project Path="test/Starbender.FPrimeSharp.Gds.EntityFrameworkCore.Tests/Starbender.FPrimeSharp.Gds.EntityFrameworkCore.Tests.csproj" />
+        <Project Path="test/Starbender.FPrimeSharp.Gds.Domain.Tests/Starbender.FPrimeSharp.Gds.Domain.Tests.csproj" />
+        <Project Path="test/Starbender.FPrimeSharp.Gds.Application.Tests/Starbender.FPrimeSharp.Gds.Application.Tests.csproj" />
+    </Folder>
+</Solution>
