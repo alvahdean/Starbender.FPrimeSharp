@@ -1,36 +1,32 @@
 ﻿using Blazorise;
 using Blazorise.Bootstrap5;
 using Blazorise.Icons.FontAwesome;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Volo.Abp.AspNetCore.Components.Web;
+using Starbender.FPrimeSharp.Gds;
+using Starbender.FPrimeSharp.Gds.Blazor;
 using Starbender.FPrimeSharp.GdsApp.Menus;
 using Volo.Abp.Account;
-using Volo.Abp.AspNetCore.Components.Web.BasicTheme.Themes.Basic;
-using Volo.Abp.AspNetCore.Components.WebAssembly.BasicTheme;
+using Volo.Abp.AspNetCore.Components.Web;
 using Volo.Abp.AspNetCore.Components.Web.Theming.Routing;
-using Volo.Abp.OpenIddict;
-using Volo.Abp.Identity.Blazor;
-using Volo.Abp.Identity.Blazor.WebAssembly;
+using Volo.Abp.AspNetCore.Components.WebAssembly.BasicTheme;
 using Volo.Abp.Autofac.WebAssembly;
-using Volo.Abp.Mapperly;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.FeatureManagement.Blazor.WebAssembly;
 using Volo.Abp.Identity;
+using Volo.Abp.Identity.Blazor.WebAssembly;
 using Volo.Abp.Modularity;
+using Volo.Abp.OpenIddict;
 using Volo.Abp.PermissionManagement;
 using Volo.Abp.PermissionManagement.Blazor.WebAssembly;
-using Volo.Abp.SettingManagement.Blazor.WebAssembly;
 using Volo.Abp.SettingManagement;
+using Volo.Abp.SettingManagement.Blazor.WebAssembly;
 using Volo.Abp.UI.Navigation;
-using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
-using Volo.Abp.AspNetCore.Components.WebAssembly.Theming.Bundling;
 
 namespace Starbender.FPrimeSharp.GdsApp;
 
 [DependsOn(
     typeof(GdsAppContractsModule),
-        
+
     // ABP Framework packages
     typeof(AbpAutofacWebAssemblyModule),
 
@@ -57,7 +53,12 @@ namespace Starbender.FPrimeSharp.GdsApp;
     typeof(AbpSettingManagementBlazorWebAssemblyModule),
 
     // Theme
-    typeof(AbpAspNetCoreComponentsWebAssemblyBasicThemeModule)
+    typeof(AbpAspNetCoreComponentsWebAssemblyBasicThemeModule),
+
+    // GDS Module
+    // Setting Management module packages
+    typeof(GdsHttpApiClientModule),
+    typeof(GdsBlazorModule)
 )]
 public class GdsAppClientModule : AbpModule
 {
@@ -83,7 +84,7 @@ public class GdsAppClientModule : AbpModule
         context.Services.AddHttpClientProxies(typeof(GdsAppContractsModule).Assembly);
     }
 
-    private void ConfigureRouter(ServiceConfigurationContext context)
+    private void ConfigureRouter(ServiceConfigurationContext _)
     {
         Configure<AbpRouterOptions>(options =>
         {
@@ -115,7 +116,6 @@ public class GdsAppClientModule : AbpModule
     {
         builder.Services.AddBlazorWebAppServices();
     }
-
 
     private static void ConfigureHttpClient(ServiceConfigurationContext context, IWebAssemblyHostEnvironment environment)
     {

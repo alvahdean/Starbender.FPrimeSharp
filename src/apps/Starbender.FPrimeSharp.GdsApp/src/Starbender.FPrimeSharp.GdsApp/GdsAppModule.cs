@@ -64,6 +64,9 @@ using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.Sqlite;
 using Volo.Abp.Studio.Client.AspNetCore;
+using Starbender.FPrimeSharp.Gds.EntityFrameworkCore;
+using Starbender.FPrimeSharp.Gds.Blazor;
+using Starbender.FPrimeSharp.Gds;
 
 namespace Starbender.FPrimeSharp.GdsApp;
 
@@ -111,6 +114,11 @@ namespace Starbender.FPrimeSharp.GdsApp;
     typeof(AbpAspNetCoreComponentsServerBasicThemeModule),
     typeof(AbpAspNetCoreComponentsWebAssemblyBasicThemeBundlingModule),
 
+    // Setting Management module packages
+    typeof(GdsBlazorModule),
+    typeof(GdsHttpApiModule),
+    typeof(GdsApplicationModule),
+
     // Entity Framework Core packages for the used modules
     typeof(AbpAuditLoggingEntityFrameworkCoreModule),
     typeof(AbpFeatureManagementEntityFrameworkCoreModule),
@@ -120,7 +128,8 @@ namespace Starbender.FPrimeSharp.GdsApp;
     typeof(AbpSettingManagementEntityFrameworkCoreModule),
     typeof(AbpBackgroundJobsEntityFrameworkCoreModule),
     typeof(BlobStoringDatabaseEntityFrameworkCoreModule),
-    typeof(AbpEntityFrameworkCoreSqliteModule)
+    typeof(AbpEntityFrameworkCoreSqliteModule),
+    typeof(GdsEntityFrameworkCoreModule)
 )]
 public class GdsAppModule : AbpModule
 {
@@ -274,7 +283,7 @@ public class GdsAppModule : AbpModule
             .AddFontAwesomeIcons();
     }
 
-    private void ConfigureRouter(ServiceConfigurationContext context)
+    private void ConfigureRouter(ServiceConfigurationContext _)
     {
         Configure<AbpRouterOptions>(options =>
         {
@@ -366,7 +375,6 @@ public class GdsAppModule : AbpModule
             options.TransactionBehavior = UnitOfWorkTransactionBehavior.Disabled;
         });
     }
-
 
     public override void OnApplicationInitialization(ApplicationInitializationContext context)
     {
