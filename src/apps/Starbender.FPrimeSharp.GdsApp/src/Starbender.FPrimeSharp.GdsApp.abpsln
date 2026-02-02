@@ -1,0 +1,65 @@
+{
+  "id": "a553d246-e2f6-48f3-b29d-d36a60105063",
+  "template": "app-nolayers",
+  "versions": {
+    "AbpFramework": "10.0.2",
+    "AbpStudio": "2.1.9",
+    "TargetDotnetFramework": "net10.0"
+  },
+  "modules": {
+    "Starbender.FPrimeSharp.GdsApp": {
+      "path": "Starbender.FPrimeSharp.GdsApp.abpmdl",
+      "isMainApplication": true,
+      "folder": "main"
+    },
+    "Starbender.FPrimeSharp.Gds": {
+      "path": "modules/starbender.fprimesharp.gds/Starbender.FPrimeSharp.Gds.abpmdl",
+      "folder": "modules"
+    },
+    "Starbender.FPrimeSharp.GdsStd": {
+      "path": "modules/starbender.fprimesharp.gdsstd/Starbender.FPrimeSharp.GdsStd.abpmdl",
+      "folder": "modules"
+    }
+  },
+  "runProfiles": {
+    "Default": {
+      "path": "etc/run-profiles/Default.abprun.json"
+    }
+  },
+  "options": {
+    "httpRequests": {
+      "ignoredUrls": []
+    }
+  },
+  "creatingStudioConfiguration": {
+    "template": "app-nolayers",
+    "createdAbpStudioVersion": "2.1.9",
+    "creationTool": "ABP Studio UI",
+    "multiTenancy": "false",
+    "runInstallLibs": "",
+    "useLocalReferences": "false",
+    "uiFramework": "blazor-webapp",
+    "databaseProvider": "ef",
+    "runDbMigrator": "",
+    "includeTests": "true",
+    "databaseManagementSystem": "sqlite",
+    "createInitialMigration": "",
+    "theme": "basic",
+    "themeStyle": "",
+    "themeMenuPlacement": "",
+    "publicWebsite": "",
+    "socialLogin": "false",
+    "sampleCrudPage": "false",
+    "selectedLanguages": [
+      "English"
+    ],
+    "defaultLanguage": "English",
+    "createCommand": "abp new Starbender.FPrimeSharp.GdsApp -t app-nolayers --ui-framework blazor-webapp --mobile  --database-provider ef --database-management-system sqlite --theme basic --skip-migration  --skip-migrator  --without-cms-kit --dont-run-install-libs --dont-run-bundling --no-multi-tenancy --no-social-logins -no-gdpr -no-openiddict-admin-ui -no-audit-logging -no-file-management -no-language-management -no-text-template-management"
+  },
+  "folders": {
+    "items": {
+      "main": {},
+      "modules": {}
+    }
+  }
+}

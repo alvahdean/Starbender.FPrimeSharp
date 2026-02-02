@@ -1,0 +1,15 @@
+<Solution>
+    <Folder Name="/SolutionItems/">
+        <File Path=".editorconfig" />
+        <File Path=".gitattributes" />
+        <File Path=".gitignore" />
+        <File Path="common.props" />
+        <File Path="migrate-database.ps1" />
+        <File Path="NuGet.Config" />
+        <File Path="README.md" />
+    </Folder>
+    <Project Path="Starbender.FPrimeSharp.GdsApp.Client/Starbender.FPrimeSharp.GdsApp.Client.csproj" />
+    <Project Path="Starbender.FPrimeSharp.GdsApp.Contracts/Starbender.FPrimeSharp.GdsApp.Contracts.csproj" />
+    <Project Path="Starbender.FPrimeSharp.GdsApp.Tests/Starbender.FPrimeSharp.GdsApp.Tests.csproj" />
+    <Project Path="Starbender.FPrimeSharp.GdsApp/Starbender.FPrimeSharp.GdsApp.csproj" />
+</Solution>

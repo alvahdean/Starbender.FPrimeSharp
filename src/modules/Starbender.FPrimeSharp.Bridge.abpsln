@@ -1,0 +1,9 @@
+{
+  "id": "a04a9c7e-667e-4dfd-b7c9-7a870f6dffed",
+  "template": "empty",
+  "modules": {
+    "Starbender.FPrimeSharp.Bridge": {
+      "path": "Starbender.FPrimeSharp.Bridge.abpmdl"
+    }
+  }
+}
