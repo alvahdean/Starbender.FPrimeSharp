@@ -69,6 +69,10 @@ using Starbender.FPrimeSharp.Gds.Blazor;
 using Starbender.FPrimeSharp.Gds;
 using Starbender.FPrimeSharp.Bridge.EntityFrameworkCore;
 using Starbender.FPrimeSharp.Bridge;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Starbender.FPrimeSharp.GdsApp;
 
@@ -231,6 +235,32 @@ public class GdsAppModule : AbpModule
         {
             options.IsDynamicClaimsEnabled = true;
         });
+
+        var azureAd = context.Configuration.GetSection("Authentication:AzureAd");
+        var instance = azureAd["Instance"]?.TrimEnd('/') ?? "https://login.microsoftonline.com";
+        var tenantId = azureAd["TenantId"];
+        var clientId = azureAd["ClientId"];
+
+        if (!string.IsNullOrWhiteSpace(tenantId) && !string.IsNullOrWhiteSpace(clientId))
+        { 
+            context.Services
+                .AddAuthentication()
+                .AddOpenIdConnect(
+                    OpenIdConnectDefaults.AuthenticationScheme, 
+                    "Microsoft", 
+                    options =>
+                    {
+                        azureAd.Bind(options);
+                        options.Authority = $"{instance}/{tenantId}/v2.0";
+                        options.ClientId = clientId;
+                        options.ResponseType = OpenIdConnectResponseType.Code;
+                        options.SaveTokens = true;
+                        options.Scope.Clear();
+                        options.Scope.Add("openid");
+                        options.Scope.Add("profile");
+                        options.Scope.Add("email");
+                    });
+        }
     }
 
     private void ConfigureBundles()
