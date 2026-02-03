@@ -42,9 +42,8 @@
         <Project Path="../../../modules/gds/test/Starbender.FPrimeSharp.Gds.TestBase/Starbender.FPrimeSharp.Gds.TestBase.csproj" />
     </Folder>
     <Folder Name="/_SolutionItems/">
+        <File Path="../../../../.gitignore" />
         <File Path=".editorconfig" />
-        <File Path=".gitattributes" />
-        <File Path=".gitignore" />
         <File Path="common.props" />
         <File Path="migrate-database.ps1" />
         <File Path="NuGet.Config" />
