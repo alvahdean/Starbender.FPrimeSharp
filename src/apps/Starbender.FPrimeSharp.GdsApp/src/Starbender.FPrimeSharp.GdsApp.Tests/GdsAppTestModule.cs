@@ -19,6 +19,7 @@ using Volo.Abp.PermissionManagement;
 using Volo.Abp.Threading;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.Uow;
+using Starbender.FPrimeSharp.Gds.Options;
 
 namespace Starbender.FPrimeSharp.GdsApp;
 
@@ -47,7 +48,10 @@ public class GdsAppTestModule : AbpModule
         {
             options.AddDevelopmentEncryptionAndSigningCertificate = true;
         });
+
         PreConfigure<AbpSqliteOptions>(x => x.BusyTimeout = null);
+
+        PreConfigureTcpOptions(context);
     }
 
     public override void ConfigureServices(ServiceConfigurationContext context)
@@ -72,10 +76,22 @@ public class GdsAppTestModule : AbpModule
             options.IsDynamicPermissionStoreEnabled = false;
         });
 
-
         ConfigureInMemorySqlite(context.Services);
     }
-    
+
+    public void PreConfigureTcpOptions(ServiceConfigurationContext context)
+    {
+        // Default test options; individual tests can override by building their own Host with Configure<TcpServerOptions>.
+        context.Services.PreConfigure<TcpServerOptions>(o =>
+        {
+            o.BindAddress = "127.0.0.1";
+            o.Port = 0; // ephemeral
+            o.MaxConnections = 10;
+            o.Backlog = 5;
+            o.ReceiveBufferBytes = 64 * 1024;
+        });
+    }
+
     private SqliteConnection? _sqliteConnection;
 
     private void ConfigureInMemorySqlite(IServiceCollection services)
@@ -121,12 +137,11 @@ public class GdsAppTestModule : AbpModule
     {
         AsyncHelper.RunSync(async () =>
         {
-            using (var scope = context.ServiceProvider.CreateScope())
-            {
-                await scope.ServiceProvider
-                    .GetRequiredService<IDataSeeder>()
-                    .SeedAsync();
-            }
+            using var scope = context.ServiceProvider.CreateScope();
+
+            await scope.ServiceProvider
+                .GetRequiredService<IDataSeeder>()
+                .SeedAsync();
         });
     }
 }
