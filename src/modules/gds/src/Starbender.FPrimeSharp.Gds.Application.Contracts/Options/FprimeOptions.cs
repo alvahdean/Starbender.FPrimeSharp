@@ -2,6 +2,6 @@
 
 public sealed class FPrimeOptions
 {
-    public TcpServerOptions Gds { get; set; } = new TcpServerOptions();
+    public GdsOptions Gds { get; set; } = new GdsOptions();
 }
 

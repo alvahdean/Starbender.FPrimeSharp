@@ -66,10 +66,14 @@ public sealed class BigEndianInt32LengthPrefixedProtocol : IFramedProtocol<Lengt
         return true;
     }
 
-    public async ValueTask WriteFrameAsync(PipeWriter writer, LengthPrefixedFrame frame, CancellationToken ct)
+    public async ValueTask WriteFrameAsync(PipeWriter writer, ReadOnlySequence<byte> payload, CancellationToken ct)
     {
-        var payload = frame.Payload;
-        var length = payload.Length;
+        if (payload.Length > uint.MaxValue)
+        {
+            throw new InvalidDataException("Payload too large");
+        }
+
+        var length = (int)payload.Length;
 
         if (MaxFrameSizeBytes.HasValue && length > MaxFrameSizeBytes.Value)
         {
@@ -79,7 +83,7 @@ public sealed class BigEndianInt32LengthPrefixedProtocol : IFramedProtocol<Lengt
         var span = writer.GetSpan(4 + length);
 
         BinaryPrimitives.WriteInt32BigEndian(span.Slice(0, 4), length);
-        payload.Span.CopyTo(span.Slice(4, length));
+        payload.CopyTo(span.Slice(4, length));
 
         writer.Advance(4 + length);
 
