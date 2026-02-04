@@ -141,8 +141,7 @@ public abstract class TcpServerHostedService<TProtocol> : BackgroundService
 
     protected virtual ValueTask RunProtocolAsync(TProtocol protocol, Stream stream, CancellationToken ct)
     {
-        // Default: handler owns its own Pipes creation, as in your ProtocolHandlerBase.
-        // If your IProtocolHandler uses PipeReader/PipeWriter directly, override this method.
+        // Default: handler owns its own Pipes creation, as in ProtocolHandlerBase.
         return new ValueTask(protocol.RunAsync(stream, ct));
     }
 
