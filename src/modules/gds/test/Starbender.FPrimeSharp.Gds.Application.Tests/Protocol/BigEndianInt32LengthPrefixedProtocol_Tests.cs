@@ -82,7 +82,7 @@ public sealed class BigEndianInt32LengthPrefixedProtocol_Tests
     {
         var protocol = new BigEndianInt32LengthPrefixedProtocol();
         var payload = new byte[] { 7, 8, 9, 10 };
-        var frame = new LengthPrefixedFrame { Payload = payload };
+        var frame = new ReadOnlySequence<byte>(payload);
         var pipe = new Pipe();
 
         await protocol.WriteFrameAsync(pipe.Writer, frame, CancellationToken.None);
@@ -105,7 +105,7 @@ public sealed class BigEndianInt32LengthPrefixedProtocol_Tests
     {
         var protocol = new BigEndianInt32LengthPrefixedProtocol(maxFrameSizeBytes: 4);
         var payload = new byte[] { 1, 2, 3, 4, 5 };
-        var frame = new LengthPrefixedFrame { Payload = payload };
+        var frame = new ReadOnlySequence<byte>(payload);
 
         await Should.ThrowAsync<InvalidDataException>(() =>
             protocol.WriteFrameAsync(new Pipe().Writer, frame, CancellationToken.None).AsTask());

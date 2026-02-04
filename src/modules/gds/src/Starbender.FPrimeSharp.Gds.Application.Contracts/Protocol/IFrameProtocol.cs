@@ -4,7 +4,7 @@
 /// Contract for a full frame protocol handler
 /// </summary>
 /// <typeparam name="TFrame">The datatype describing the frame</typeparam>
-public interface IFramedProtocol<TFrame> : IFrameReader<TFrame>, IFrameWriter<TFrame>
+public interface IFramedProtocol<TFrame> : IFrameReader<TFrame>, IFrameWriter
 {
     /// <summary>
     /// Indicates the frame type that the protocol implements
