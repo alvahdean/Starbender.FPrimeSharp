@@ -1,0 +1,26 @@
+﻿@using MudBlazor
+
+<MudTable Items="_items"
+          Dense="true"
+          Hover="true"
+          Bordered="true"
+          Elevation="0">
+
+    <HeaderContent>
+        <MudTh>Header</MudTh>
+        <MudTh>Value</MudTh>
+    </HeaderContent>
+
+    <RowTemplate>
+        <MudTd DataLabel="Header">@context.Key</MudTd>
+        <MudTd DataLabel="Value">@(context.Value??string.Empty)</MudTd>
+    </RowTemplate>
+
+</MudTable>
+
+@code {
+    [Parameter] public Dictionary<string, string?>? Data { get; set; }
+
+    private IEnumerable<KeyValuePair<string, string?>> _items =>
+        Data ?? Enumerable.Empty<KeyValuePair<string, string?>>();
+}

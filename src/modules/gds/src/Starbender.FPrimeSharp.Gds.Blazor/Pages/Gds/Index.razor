@@ -1,8 +1,11 @@
 @page "/Gds"
+
+@inherits GdsComponentBase
+
 @using Microsoft.Extensions.Localization
+@using Starbender.FPrimeSharp.Gds.Blazor.Components
 @using global::Starbender.FPrimeSharp.Gds.Localization
-@inject IStringLocalizer<GdsResource> L
-@{
-}
-<h1>Gds</h1>
-<p>@L["SamplePageMessage"]</p>
+
+
+<h1>GDS Test Page</h1>
+<TopologyViewer Topology="_topolopgy" />

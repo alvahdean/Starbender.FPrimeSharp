@@ -6,3 +6,9 @@
 
 **/.vscode/
 **/.cursor/
+
+src/apps/Starbender.FPrimeSharp.GdsApp/data/GdsApp.db
+
+src/apps/Starbender.FPrimeSharp.GdsApp/data/GdsApp.db-shm
+
+src/apps/Starbender.FPrimeSharp.GdsApp/data/GdsApp.db-wal

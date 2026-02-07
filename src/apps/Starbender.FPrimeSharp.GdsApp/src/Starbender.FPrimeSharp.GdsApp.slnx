@@ -43,6 +43,7 @@
     </Folder>
     <Folder Name="/_SolutionItems/">
         <File Path="../../../../.gitignore" />
+        <File Path="../data/RefTopologyDictionary.json" />
         <File Path=".editorconfig" />
         <File Path="common.props" />
         <File Path="etc/build/build-images-locally.ps1" />
