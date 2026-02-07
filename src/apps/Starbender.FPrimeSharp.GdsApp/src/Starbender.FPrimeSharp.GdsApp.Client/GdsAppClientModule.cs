@@ -2,6 +2,8 @@
 using Blazorise.Bootstrap5;
 using Blazorise.Icons.FontAwesome;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using MudBlazor;
+using MudBlazor.Services;
 using Starbender.FPrimeSharp.Gds;
 using Starbender.FPrimeSharp.Gds.Blazor;
 using Starbender.FPrimeSharp.GdsApp.Menus;
@@ -78,6 +80,7 @@ public class GdsAppClientModule : AbpModule
         ConfigureAuthentication(builder);
         ConfigureHttpClient(context, environment);
         ConfigureBlazorise(context);
+        ConfigureMudBlazor(context);
         ConfigureRouter(context);
         ConfigureMenu(context);
 
@@ -111,6 +114,14 @@ public class GdsAppClientModule : AbpModule
             })
             .AddBootstrap5Providers()
             .AddFontAwesomeIcons();
+    }
+
+    private void ConfigureMudBlazor(ServiceConfigurationContext context)
+    {
+        context.Services.AddMudServices(config =>
+        {
+            config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.BottomRight;
+        });
     }
 
     private static void ConfigureAuthentication(WebAssemblyHostBuilder builder)

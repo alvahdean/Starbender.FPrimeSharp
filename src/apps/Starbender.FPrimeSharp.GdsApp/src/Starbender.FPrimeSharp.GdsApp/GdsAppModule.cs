@@ -73,6 +73,8 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
+using MudBlazor.Services;
+using MudBlazor;
 
 namespace Starbender.FPrimeSharp.GdsApp;
 
@@ -207,6 +209,7 @@ public class GdsAppModule : AbpModule
         ConfigureAuthentication(context);
         ConfigureBundles();
         ConfigureBlazorise(context);
+        ConfigureMudBlazor(context);
         ConfigureRouter(context);
         ConfigureMultiTenancy();
         ConfigureMenu(context);
@@ -305,6 +308,14 @@ public class GdsAppModule : AbpModule
             var globalScripts = options.ScriptBundles.Get(BlazorWebAssemblyStandardBundles.Scripts.Global);
             globalScripts.AddContributors(typeof(GdsAppScriptBundleContributor));
 
+        });
+    }
+
+    private void ConfigureMudBlazor(ServiceConfigurationContext context)
+    {
+        context.Services.AddMudServices(config =>
+        {
+            config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.BottomRight;
         });
     }
 
@@ -417,6 +428,7 @@ public class GdsAppModule : AbpModule
     public override void OnApplicationInitialization(ApplicationInitializationContext context)
     {
         var app = context.GetApplicationBuilder();
+
         var env = context.GetEnvironment();
 
         if (env.IsDevelopment())

@@ -1,6 +1,6 @@
 using System;
 
-namespace Starbender.FPrimeSharp.Gds;
+namespace Starbender.FPrimeSharp.Gds.Protocol;
 
 public enum CommDriverType
 {

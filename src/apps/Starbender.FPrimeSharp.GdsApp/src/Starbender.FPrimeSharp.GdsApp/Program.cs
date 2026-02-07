@@ -1,6 +1,6 @@
-using Starbender.FPrimeSharp.GdsApp.Data;
 using Serilog;
 using Serilog.Events;
+using Starbender.FPrimeSharp.GdsApp.Data;
 using Volo.Abp.Data;
 
 namespace Starbender.FPrimeSharp.GdsApp;
@@ -17,6 +17,9 @@ public class Program
         try
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Configuration.AddJsonFile("topology.json", optional: true, reloadOnChange: true);
+
             builder.Host.AddAppSettingsSecretsJson()
                 .UseAutofac()
                 .UseSerilog((context, services, loggerConfiguration) =>
@@ -31,11 +34,11 @@ public class Program
                     else
                     {
                         loggerConfiguration
-                        #if DEBUG
+#if DEBUG
                             .MinimumLevel.Debug()
-                        #else
+#else
                             .MinimumLevel.Information()
-                        #endif
+#endif
                             .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                             .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
                             .Enrich.FromLogContext()
@@ -44,11 +47,14 @@ public class Program
                             .WriteTo.Async(c => c.AbpStudio(services));
                     }
                 });
+
             if (IsMigrateDatabase(args))
             {
                 builder.Services.AddDataMigrationEnvironment();
             }
+
             await builder.AddApplicationAsync<GdsAppModule>();
+            
             var app = builder.Build();
             await app.InitializeApplicationAsync();
 
@@ -65,8 +71,7 @@ public class Program
             Log.Information("Starting Starbender.FPrimeSharp.GdsApp.");
             await app.RunAsync();
             return 0;
-        }
-        catch (Exception ex)
+        } catch (Exception ex)
         {
             if (ex is HostAbortedException)
             {

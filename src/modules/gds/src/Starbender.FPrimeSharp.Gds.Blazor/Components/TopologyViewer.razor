@@ -1,0 +1,56 @@
+﻿@using Starbender.FPrimeSharp.Gds.Blazor.Components.Common
+@using Starbender.FPrimeSharp.Gds.Topology
+@using System.Text.Json
+@using MudBlazor
+
+<CollapsibleContentArea Title="Topology Statistics">
+    <MudStack>
+        <CollapsibleContentArea Title="Metadata">
+            <KeyValueTable Data="@_metadata" />
+        </CollapsibleContentArea>
+
+
+        <CollapsibleContentArea Title="Statistics">
+            <KeyValueTable Data="@_statistics" />
+        </CollapsibleContentArea>
+    </MudStack>
+</CollapsibleContentArea>
+
+@code {
+    [Parameter] public TopologyDictionary? Topology { get; set; }
+
+    private Dictionary<string, string?> _statistics = new();
+    private Dictionary<string, string?> _metadata = new();
+
+
+    protected override void OnParametersSet()
+    {
+        var metadata = Topology?.Metadata;
+
+        var libVersions = string.Join(", ", metadata?.LibraryVersions ?? Enumerable.Empty<string>());
+        _metadata = new()
+        {
+            { "Deployment Name", metadata?.DeploymentName },
+            { "Dictionary Spec Version", metadata?.DictionarySpecVersion },
+            { "Framework Version", metadata?.FrameworkVersion },
+            { "Lib Versions", libVersions },
+            { "Project Version", metadata?.ProjectVersion }
+        };
+
+        _statistics = new()
+        {
+            { "# Constants", (Topology?.Constants?.Count??0).ToString() },
+            { "# Events", (Topology?.Events?.Count??0).ToString() },
+            { "# Type Defiinitions", (Topology?.TypeDefinitions?.Count??0).ToString() },
+            { "# Containers", (Topology?.Containers?.Count??0).ToString() },
+            { "# Commands", (Topology?.Commands?.Count??0).ToString() },
+            { "# Parameters", (Topology?.Parameters?.Count??0).ToString() },
+            { "# Records", (Topology?.Records?.Count??0).ToString() },
+            { "# Telemetry Packetsets", (Topology?.TelemetryPacketSets?.Count??0).ToString() },
+            { "# Telemetry Channels", (Topology?.TelemetryChannels?.Count??0).ToString() },
+            
+        };
+        base.OnParametersSet();
+    }
+
+}

@@ -6,10 +6,9 @@ using System.IO.Pipelines;
 using System.Threading;
 using System.Threading.Tasks;
 using Shouldly;
-using Starbender.FPrimeSharp.Gds.Protocol;
 using Xunit;
 
-namespace Starbender.FPrimeSharp.Gds.Framing;
+namespace Starbender.FPrimeSharp.Gds.Protocol;
 
 public sealed class BigEndianInt32LengthPrefixedProtocol_Tests
 {

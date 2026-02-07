@@ -1,0 +1,118 @@
+﻿@* CollapsibleContentArea.razor *@
+
+@using MudBlazor
+@using Color=MudBlazor.Color;
+@using Size=MudBlazor.Size;
+
+<MudPaper Class="@($"collapsible-section {Class}")" Elevation="@Elevation" Square="@Square" Outlined="@Outlined">
+    <MudStack Spacing="0">
+        <div @onclick="OnHeaderClick" style="cursor:@(Disabled ? "not-allowed" : "pointer");">
+            <MudToolBar Dense="@Dense" Gutters="@(!DisableGutters)" Class="@($"collapsible-section__header {HeaderClass}")">
+                <MudIconButton Icon="@(_expanded? ExpandedIcon : CollapsedIcon)"
+                               Size="@IconSize"
+                               Color="@IconColor"
+                               OnClick="Toggle"
+                               Disabled="@Disabled"
+                               UserAttributes="@_toggleAttrs" />
+
+                @if (TitleContent is not null)
+                {
+                    <div class="collapsible-section__title">
+                        @TitleContent
+                    </div>
+                }
+                else if (!string.IsNullOrWhiteSpace(Title))
+                {
+                    <MudText Typo="@TitleTypo" Class="collapsible-section__title-text">
+                        @Title
+                    </MudText>
+                }
+
+                <MudSpacer />
+
+                @if (ToolbarContent is not null)
+                {
+                    @ToolbarContent
+                }
+            </MudToolBar>
+        </div>
+
+        <MudCollapse Expanded="@_expanded">
+            <MudDivider />
+            <div class="@($"collapsible-section__body {BodyClass}")" style="@BodyStyle">
+                @ChildContent
+            </div>
+        </MudCollapse>
+    </MudStack>
+</MudPaper>
+
+@code {
+    private bool _expanded;
+    private Dictionary<string, object> _toggleAttrs = new();
+
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    // Title options
+    [Parameter] public string? Title { get; set; }
+    [Parameter] public RenderFragment? TitleContent { get; set; }
+    [Parameter] public Typo TitleTypo { get; set; } = Typo.body2;
+
+    // Optional right-side header content (buttons, chips, etc.)
+    [Parameter] public RenderFragment? ToolbarContent { get; set; }
+
+    // Expand/collapse state
+    [Parameter] public bool Expanded { get; set; } = true;
+    [Parameter] public EventCallback<bool> ExpandedChanged { get; set; }
+
+    // Behavior
+    [Parameter] public bool Disabled { get; set; }
+    [Parameter] public bool ToggleOnHeaderClick { get; set; } = true;
+
+    // Appearance
+    [Parameter] public int Elevation { get; set; } = 1;
+    [Parameter] public bool Outlined { get; set; } = true;
+    [Parameter] public bool Square { get; set; }
+    [Parameter] public bool Dense { get; set; } = true;
+    [Parameter] public bool DisableGutters { get; set; } = true;
+
+    // Icons
+    [Parameter] public string CollapsedIcon { get; set; } = Icons.Material.Filled.ChevronRight;
+    [Parameter] public string ExpandedIcon { get; set; } = Icons.Material.Filled.ExpandMore;
+    [Parameter] public Size IconSize { get; set; } = Size.Medium;
+    [Parameter] public Color IconColor { get; set; } = Color.Inherit;
+
+    // Styling hooks
+    [Parameter] public string Class { get; set; } = "";
+    [Parameter] public string HeaderClass { get; set; } = "";
+    [Parameter] public string BodyClass { get; set; } = "";
+    [Parameter] public string BodyStyle { get; set; } = "padding: 16px;";
+
+    // Accessibility
+    [Parameter] public string AriaLabel { get; set; } = "Toggle section";
+
+    protected override void OnParametersSet()
+    {
+        _expanded = Expanded;
+        _toggleAttrs = new Dictionary<string, object>
+        {
+            ["aria-label"] = AriaLabel
+        };
+    }
+
+    private async Task Toggle()
+    {
+        if (Disabled) return;
+
+        _expanded = !_expanded;
+        Expanded = _expanded;
+
+        if (ExpandedChanged.HasDelegate)
+            await ExpandedChanged.InvokeAsync(_expanded);
+    }
+
+    private async Task OnHeaderClick()
+    {
+        if (!ToggleOnHeaderClick || Disabled) return;
+        await Toggle();
+    }
+}
